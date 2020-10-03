@@ -28,7 +28,7 @@ namespace SimpleGuestbookMariaDb
             services.AddControllersWithViews();
             services.Configure<AppSettings>(Configuration.GetSection(nameof(AppSettings)));
             services.AddSingleton<AppSettings>(sp => sp.GetRequiredService<IOptions<AppSettings>>().Value);
-            services.AddSingleton<PostsRepository>();
+            services.AddSingleton<IPostsRepository, PostsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

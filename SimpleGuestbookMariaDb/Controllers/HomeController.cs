@@ -14,9 +14,9 @@ namespace SimpleGuestbookMariaDb.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly PostsRepository _postsRepository;
+        private readonly IPostsRepository _postsRepository;
 
-        public HomeController(ILogger<HomeController> logger, PostsRepository postsRepository)
+        public HomeController(ILogger<HomeController> logger, IPostsRepository postsRepository)
         {
             _logger = logger;
             _postsRepository = postsRepository;

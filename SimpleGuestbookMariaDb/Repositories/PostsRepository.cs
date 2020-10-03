@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SimpleGuestbookMariaDb.Repositories
 {
-    public class PostsRepository
+    public class PostsRepository : IPostsRepository
     {
         private readonly string _connectionString;
         public PostsRepository(AppSettings settings) 

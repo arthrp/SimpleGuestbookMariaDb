@@ -4,10 +4,12 @@ WORKDIR /source
 # copy csproj and restore as distinct layers
 COPY *.sln .
 COPY SimpleGuestbookMariaDb/*.csproj ./SimpleGuestbookMariaDb/
+COPY SimpleGuestbookMariaDb.Tests/*.csproj ./SimpleGuestbookMariaDb.Tests/
 RUN dotnet restore
 
 # copy everything else and build app
 COPY SimpleGuestbookMariaDb/. ./SimpleGuestbookMariaDb/
+COPY SimpleGuestbookMariaDb.Tests/. ./SimpleGuestbookMariaDb.Tests/
 WORKDIR /source/SimpleGuestbookMariaDb
 RUN dotnet publish -c release -o /app
 
