@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:80"
+    depends_on:
+        mariadb:
+            condition: service_healthy
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: supersecretpw
+      MYSQL_DATABASE: guestdb
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=supersecretpw --execute \"SHOW DATABASES;\""
+      interval: 3s
+      timeout: 1s
+      retries: 5
+    ports:
+        - 3306:3306
